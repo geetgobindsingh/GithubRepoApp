@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/colorWhite</color>
+    <color name="colorPrimaryDark">@color/colorWhite</color>
+    <color name="colorAccent">#25282B</color>
+
+    <color name="shimmerBackground">#ebebeb</color>
+    <color name="colorRetry">#31B057</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorToolbarTitle">@color/colorAccent</color>
+    <color name="colorText">#52575C</color>
+    <color name="colorTransparentDark">#80000000</color>
+</resources>

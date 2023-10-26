@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="androidx.lifecycle.LiveData" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="viewModel"
+            type="com.geetgobindingh.githubrepoapp.ui.common.GithubRepositoryViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/state_background_item"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{() -> viewModel.onItemClick()}"
+        app:backgroundElevation="@{viewModel.selected}">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="84dp" />
+
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginBottom="21dp"
+            android:background="@drawable/shape_background_thumbnail_shimmer"
+            app:circularImageUrl="@{viewModel.githubRepository.avatar}"
+            app:layout_constraintBottom_toTopOf="@id/guideline1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.09"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/user_name_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"
+            android:singleLine="true"
+            android:text="@{viewModel.githubRepository.author}"
+            android:textColor="@color/colorText"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/thumbnail"
+            app:layout_constraintTop_toTopOf="@id/thumbnail"
+            tools:text="mBinary" />
+
+        <TextView
+            android:id="@+id/project_name_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
+            android:singleLine="true"
+            android:text="@{viewModel.githubRepository.name}"
+            android:textColor="@color/colorText"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/thumbnail"
+            app:layout_constraintTop_toBottomOf="@id/user_name_text_view"
+            tools:text="USTC-CS-Courses-Resources" />
+
+        <TextView
+            android:id="@+id/description_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/pingfang_sc_regular"
+            android:maxLines="3"
+            android:text="@{viewModel.githubRepository.name}"
+            android:textColor="@color/colorText"
+            android:textSize="15sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/thumbnail"
+            app:layout_constraintTop_toBottomOf="@id/project_name_text_view"
+            tools:text="USTC-CS-Courses-Resources" />
+
+        <TextView
+            android:id="@+id/language_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:drawablePadding="6dp"
+            android:fontFamily="sans-serif"
+            android:text="@{viewModel.githubRepository.language}"
+            android:textColor="@color/colorText"
+            android:textSize="12sp"
+            app:drawableLeftCompat="@drawable/shape_drawable_language"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/thumbnail"
+            app:layout_constraintTop_toBottomOf="@id/description_text_view"
+            tools:text="JAVA" />
+
+        <TextView
+            android:id="@+id/star_count_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:drawablePadding="4dp"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/colorText"
+            android:textSize="12sp"
+            app:drawableLeftCompat="@mipmap/star_yellow_16"
+            app:formattedInteger="@{viewModel.githubRepository.stars}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/language_text_view"
+            app:layout_constraintTop_toBottomOf="@id/description_text_view"
+            tools:text="14,324" />
+
+        <TextView
+            android:id="@+id/fork_count_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:drawablePadding="4dp"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/colorText"
+            android:textSize="12sp"
+            app:drawableLeftCompat="@mipmap/fork_black_16"
+            app:formattedInteger="@{viewModel.githubRepository.forks}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/star_count_text_view"
+            app:layout_constraintTop_toBottomOf="@id/description_text_view"
+            tools:text="1,324" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="description_text_view,language_text_view,star_count_text_view, fork_count_text_view"
+            app:visibility="@{viewModel.selected}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

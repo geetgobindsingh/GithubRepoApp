@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/button_three_dots"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:icon="@drawable/ic_three_dots_24dp"
+        android:title="@string/text_more"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/sort_by_stars"
+                android:title="@string/text_sort_by_stars" />
+            <item
+                android:id="@+id/sort_by_name"
+                android:title="@string/text_sort_by_name" />
+            <item
+                android:id="@+id/sort_by_default"
+                android:title="@string/text_default" />
+        </menu>
+    </item>
+</menu>
